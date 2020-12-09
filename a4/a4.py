@@ -16,6 +16,7 @@ for x in range(len(passports)):
     items = []
     for i in passport.split("\n"):
         items += i.split(" ")
+        
     for item in items:
         field, value = item.split(":")
         if (field == 'cid'):

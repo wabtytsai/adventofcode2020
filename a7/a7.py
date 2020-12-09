@@ -6,6 +6,7 @@ rules = fin.readlines()
 
 dic = {}
 for rule in rules:
+    # string splicing magic
     root, rest = rule.split(" bags contain ")
     dic[root] = []
     bags = rest.split(", ")

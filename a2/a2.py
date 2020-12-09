@@ -1,11 +1,12 @@
 fin = open('a2.in')
-total = 0
 
+total = 0
 for line in fin.readlines():
 	freq, letter, password = line.split(' ')
 	low, high = map(int, freq.split('-'))
 	letter = letter[0]
 	password.strip()
+	# add padding so index starts at 1
 	password = " " + password
 
 	count = 0
@@ -15,4 +16,6 @@ for line in fin.readlines():
 		count += 1
 	if (count == 1):
 		total += 1
-print total
+print(total)
+
+fin.close()

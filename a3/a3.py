@@ -21,3 +21,4 @@ product = 1
 for i in ret:
 	product *= i
 print(product, ret)
+fin.close()

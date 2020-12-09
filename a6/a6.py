@@ -6,6 +6,7 @@ total = 0
 for group in groups:
     size = group.count('\n') + 1
     count = {}
+    # merge group into one line
     line = "".join(group.split('\n'))
     for i in line:
         if i not in count:
@@ -14,7 +15,6 @@ for group in groups:
     for i in count.values():
         if i == size:
             total += 1
-##    print(count)
 
 print(total)
 

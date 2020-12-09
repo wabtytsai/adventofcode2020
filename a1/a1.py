@@ -1,5 +1,7 @@
 fin = open('a1.in')
-expenses = fin.read().strip().split("\n")
+expenses = fin.readlines()
+fin.close()
+
 expenses = map(int, expenses)
 expenses.sort()
 pivot = 0
