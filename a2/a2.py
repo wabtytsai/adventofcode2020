@@ -1,4 +1,4 @@
-fin = open('a2.txt')
+fin = open('a2.in')
 total = 0
 
 for line in fin.readlines():

@@ -1,4 +1,4 @@
-fin = open('a3.txt')
+fin = open('a3.in')
 grid = []
 for line in fin.readlines():
 	grid.append(line.strip())

@@ -1,4 +1,4 @@
-fin = open('a1p1i.txt')
+fin = open('a1.in')
 expenses = fin.read().strip().split("\n")
 expenses = map(int, expenses)
 expenses.sort()
