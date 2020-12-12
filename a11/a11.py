@@ -33,62 +33,15 @@ def shift(grid):
 
 def check2(grid, x, y, state):
 	count = 0
-	# left
-	for x2 in range(x - 1, -1, -1):
-		if grid[y][x2] == '.': continue
-		count += grid[y][x2] == state
-		break
-	# right
-	for x2 in range(x + 1, len(grid[0])):
-		if grid[y][x2] == '.': continue
-		count += grid[y][x2] == state
-		break
-	# up
-	for y2 in range(y - 1, -1, -1):
-		if grid[y2][x] == '.': continue
-		count += grid[y2][x] == state
-		break
-	# down
-	for y2  in range(y + 1, len(grid)):
-		if grid[y2][x] == '.': continue
-		count += grid[y2][x] == state
-		break
-	# bottom-right
-	for offset in range(len(grid)):
-		x2 = x + offset
-		y2 = y + offset
-		if x2 == x and y2 == y: continue
-		if not in_range(grid, x2, y2): break
-		if grid[y2][x2] == '.': continue
-		count += grid[y2][x2] == state
-		break
-	# top-right
-	for offset in range(len(grid)):
-		x2 = x + offset
-		y2 = y - offset
-		if x2 == x and y2 == y: continue
-		if not in_range(grid, x2, y2): break
-		if grid[y2][x2] == '.': continue
-		count += grid[y2][x2] == state
-		break
-	# bottom-left
-	for offset in range(len(grid)):
-		x2 = x - offset
-		y2 = y + offset
-		if x2 == x and y2 == y: continue
-		if not in_range(grid, x2, y2): break
-		if grid[y2][x2] == '.': continue
-		count += grid[y2][x2] == state
-		break
-	# top-left
-	for offset in range(len(grid)):
-		x2 = x - offset
-		y2 = y - offset
-		if x2 == x and y2 == y: continue
-		if not in_range(grid, x2, y2): break
-		if grid[y2][x2] == '.': continue
-		count += grid[y2][x2] == state
-		break
+	dirs = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+	for x_sign, y_sign in dirs:
+		for offset in range(1, len(grid)):
+			x2 = x + x_sign * offset
+			y2 = y + y_sign * offset
+			if not in_range(grid, x2, y2): break
+			if grid[y2][x2] == '.': continue
+			count += grid[y2][x2] == state
+			break
 	return count
 
 def shift2(grid):
