@@ -16,8 +16,10 @@ def two_sum(numbers):
 ## Using a Set
 We can make a key observation that if
 > x + y = 2020
+
 then
 > y = 2020 - x
+
 Since both `x` and `y` have to come from `numbers`, we can simply check if `2020 - x` is also in `numbers`. Using a set or dictionary in python would let us do lookups in constant time, with the tradeoff of using more space. 
 
 ```python
@@ -64,8 +66,10 @@ def three_sum(numbers):
 ## Using a Set
 Using the similar observation as above, we can rearrange
 > x + y + z = 2020
+
 to get
 > x + y = 2020 - z
+
 Thus we can reduce the problem to a two-sum problem with variable target sum.
 
 ```python
