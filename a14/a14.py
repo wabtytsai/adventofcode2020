@@ -27,8 +27,8 @@ for line in lines:
 
 print(sum(mem.values()))
 
-def decode_address(mask, value):
-    value = "0" * (len(mask) - len(value)) + value
+def decode_address(mask, address):
+    address = "0" * (len(mask) - len(address)) + address
     result = ""
     for i in range(len(mask)):
         if mask[i] == 'X':
@@ -36,17 +36,17 @@ def decode_address(mask, value):
         elif mask[i] == '1':
             result += '1'
         else:
-            result += value[i]
+            result += address[i]
     return result
 
-def find_address(value):
-    idx = value.find('X')
+def find_addresses(address):
+    idx = address.find('X')
     if idx == -1:
-        return [int(value, 2)]
+        return [int(address, 2)]
     else:
-        pre = value[:idx]
-        suf = value[idx + 1:]
-        return find_address(pre + '0' + suf) + find_address(pre + '1' + suf)
+        pre = address[:idx]
+        suf = address[idx + 1:]
+        return find_addresses(pre + '0' + suf) + find_addresses(pre + '1' + suf)
 
 mem = {}
 mask = ""
@@ -58,7 +58,7 @@ for line in lines:
     address = bin(int(address.strip()[4:-1]))[2:]
     value = int(value)
     address = decode_address(mask, address)
-    addresses = find_address(address)
+    addresses = find_addresses(address)
     for address in addresses:
         mem[address] = value
 print(sum(mem.values()))
