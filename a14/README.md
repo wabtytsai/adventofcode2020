@@ -33,6 +33,7 @@ def decode_address(mask, address):
     return result
 ```
 `decode_address` will return a floating address, which we then need to find all the possible values it could take on. To help us find all the possible combination of vlaues, we can use a helper function that splits the first X in the address into two addresses, one with a 0 and the other with a 1, and recursively calls itself with the two new addresses, until we are rid of all Xs. 
+
 ```python
 def find_addresses(address):
     idx = address.find('X')
