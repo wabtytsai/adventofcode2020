@@ -1,24 +1,25 @@
 
-def seatToNum(line):
-    line = line.replace("B", "1")
-    line = line.replace("F", "0")
-    line = line.replace("R", "1")
-    line = line.replace("L", "0")
-    return int(line, 2)
+def seatToID(seat):
+    number = ""
+    for i in seat:
+        if i in "BR":
+            number += "1"
+        elif i in "FL":
+            number += "0"
+    return int(number, 2)
 
 fin = open('a5.in')
 
-seats = []
+ids = set()
 
 for line in fin.readlines():
-    seat = seatToNum(line)
-    seats.append(seat)
+    ids.add(seatToID(line))
     
-
-low = min(seats)
-high = max(seats)
+high = max(ids)
+low = min(ids)
+print(high)
 for i in range(low, high):
-    if (i not in seats):
+    if (i not in ids):
         print (i)
 
 fin.close()
