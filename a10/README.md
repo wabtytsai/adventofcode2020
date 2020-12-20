@@ -20,16 +20,16 @@ def count_jumps(adapters):
 
 # Day 10 part II
 
-For part II things start to get interesting (read: tricky). At a quick glance, we seemed to be asked to find all the valid permutations of how the list of adapters can be arranged. With some quick math, we can see this quickly turns exponetial, and brute force probably would be too slow. In fact, the question told you that it self:
+For part II things start to get interesting (read: tricky). At a quick glance, we seemed to be asked to find all the valid permutations of how the list of adapters can be arranged. With some quick math, we can see this quickly turns exponetial, and brute force probably would be too slow. In fact, the question told you that itself:
 
 > there must be more than a trillion valid ways to arrange them! Surely, there must be an efficient way to count the arrangements.
 
 Thus we need to make some observations. Assuming the list of adapters is sorted
-- the number of valid arrangements is dependent on the number of ways we can arrange the adapters to get to the last element. 
+- the number of valid arrangements is depended on the number of ways we can arrange the adapters to get to the last element. 
   - This is because we always have to use the last element, and connect it to the device's built-in adapter (always +3).
-- The number of valid arrangements up to the last element is dependent on (# of ways to arrange up to [last element - 1]) + (# of ways to arrange up to[last element - 2]) + (# of ways to arrange up to [last element - 3]), if they exist.
-  - Since adapters can jump 1, 2, or 3 jolts, we can reach the last element via 3 these different ways
-- Similarly, for any other element, the number of valid arrangements up to the element is dependent on the # of ways to arrange up to [element - 1], [element - 2], [element - 3], if they exist.
+- The number of valid arrangements up to the last element is depended on (# of ways to arrange up to [last element - 1]) + (# of ways to arrange up to [last element - 2]) + (# of ways to arrange up to [last element - 3]), if they exist.
+  - Since adapters can jump 1, 2, or 3 jolts, we can reach the last element via these 3 different ways
+- Similarly, for any other element, the number of valid arrangements up to the element is depended on the # of ways to arrange up to [element - 1], [element - 2], [element - 3], if they exist.
 - Lastly, the number of ways to arrange only the first adapter is just 1, since we have to connect it to the charging outlet (0). 
 
 We see that to get the final answer, we need to build up information for the previous elements, and use them to compute the answer for the next element. Using point (3), we can derive our algorithm:
